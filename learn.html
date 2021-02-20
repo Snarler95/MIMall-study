@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="dom"></div>
+  <script>
+    function callbackFunction(result) {
+      var data = result,
+        dom = document.getElementById('dom'),
+        html = '<ul>';
+
+      for(var i = 0; i <result.length; i++) {
+        html += '<li>' + result[i].body + '</li>'
+      }
+      html += '</ul>'
+      dom.innerHTML = html
+      console.log(result)
+    }
+  </script>
+  <script src="http://jsonplaceholder.typicode.com/posts?callback=callbackFunction"></script>
+</body>
+</html>
