@@ -7,11 +7,18 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import jsonp from 'jsonp'
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  mounted() {
+    let url = 'http://jsonplaceholder.typicode.com/posts'
+    jsonp(url, (err,res) => {
+      let { result } = res
+      console.log(result)
+    })
   }
 }
 </script>
