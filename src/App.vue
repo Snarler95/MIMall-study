@@ -5,14 +5,12 @@
 </template>
 
 <script>
-// import storage from './storage/index'
 export default {
   name: 'App',
   mounted() {
-    // storage.setItem('a', 1)
-    // storage.setItem('user', {a: 1})
-    // storage.setItem('ab', {a: 1}, 'user')
-    // storage.clear('a', 'user')
+    this.axios.get('/user/login').then(response => {
+      console.log(response)
+    })
   }
 }
 </script>
