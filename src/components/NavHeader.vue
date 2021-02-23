@@ -245,6 +245,7 @@ export default {
               opacity: 0;
               overflow: hidden;
               transition: height .5s;
+              background-color: #ffffff;
               .product {
                 float: left;
                 width: 16.6%;
