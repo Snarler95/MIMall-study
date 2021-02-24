@@ -29,7 +29,7 @@
                 <li class="product" v-for="(item, index) in phoneList" :key="index">
                   <a :href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img :src="item.mainImage" :alt="item.subtitle">
+                      <img v-lazy="item.mainImage" :alt="item.subtitle">
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <div class="pro-price">{{ item.price | currency }}</div>
@@ -49,7 +49,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-1.jpg" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-1.jpg'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999</div>
@@ -58,7 +58,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-2.jpg" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999元</div>
@@ -67,7 +67,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-3.png" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-3.png'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999元</div>
@@ -76,7 +76,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-4.jpg" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-4.jpg'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999元</div>
@@ -85,7 +85,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-5.jpg" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-5.jpg'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999元</div>
@@ -94,7 +94,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="../../public/imgs/nav-img/nav-3-6.png" alt="">
+                      <img v-lazy="'/imgs/nav-img/nav-3-6.png'" alt="">
                     </div>
                     <div class="pro-name">小米11</div>
                     <div class="pro-price">3999元</div>
@@ -176,6 +176,7 @@ export default {
           background-color: #ff6600;
           text-align: center;
           color: #ffffff;
+          margin-right: 0;
           .icon-cart {
             @include bgImg(16px,12px,'../../public/imgs/icon-cart-checked.png');
             margin-right: 4px;
