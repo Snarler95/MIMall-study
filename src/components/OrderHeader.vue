@@ -8,18 +8,22 @@
         <h2>{{title}}<slot name="tip"></slot></h2>
       </div>
       <div class="username">
-        <a href="javascript:;">小米商城</a>
+        <a href="javascript:;">{{ username }}</a>
       </div>
     </div>
   </div>
 </template>
 <script>
-  export default{
-    name:'order-header',
-    props:{
-      title:String
-    }
-  }
+import { mapState } from 'vuex'
+export default{
+  name:'order-header',
+  props:{
+    title:String
+  },
+  computed: {
+    ...mapState(['username'])
+  },
+}
 </script>
 <style lang="scss">
   .order-header{

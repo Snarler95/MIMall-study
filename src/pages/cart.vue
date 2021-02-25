@@ -17,23 +17,23 @@
             <li class="col-1">操作</li>
           </ul>
           <ul class="cart-item-list">
-            <li class="cart-item">
+            <li class="cart-item" v-for="(item, index) in list" :key="index">
               <div class="item-check">
-                <span class="checkbox"></span>
+                <span class="checkbox" :class="{ 'checked' : item.productSelected }"></span>
               </div>
               <div class="item-name">
-                <img src="/imgs/item-box-3-1.png" alt="">
-                <span>小米8 6GB 全息幻彩紫 64GB</span>
+                <img v-lazy="item.productMainImage" alt="">
+                <span>{{ item.productName + ' , ' + item.productSubtitle }}</span>
               </div>
-              <div class="item-price">1999元</div>
+              <div class="item-price">{{ item.productPrice }}</div>
               <div class="item-num">
                 <div class="num-box">
                   <a href="javascript:;">-</a>
-                  <span>1</span>
+                  <span>{{ item.quantity }}</span>
                   <a href="javascript:;">+</a>
                 </div>
               </div>
-              <div class="item-total">1999元</div>
+              <div class="item-total">{{ item.productTotalPrice }}</div>
               <div class="item-del"></div>
             </li>
           </ul>
@@ -41,10 +41,10 @@
         <div class="order-wrap clearfix">
           <div class="cart-tip fl">
             <a href="/">继续购物</a>
-            共<span>1</span>件商品，已选择<span>3</span>件
+            共<span>{{ list.length }}</span>件商品，已选择<span>{{ checkedNum }}</span>件
           </div>
           <div class="total fr">
-            合计：<span>2599</span>元
+            合计：<span>{{ cartTotalPrice }}</span>元
             <a href="javascript:;" class="btn" @click="order">去结算</a>
           </div>
         </div>
@@ -67,10 +67,27 @@
     },
     data(){
       return {
-
+        list: [],
+        allChecked: false,
+        cartTotalPrice: 0,
+        checkedNum: 0
       }
     },
+    mounted() {
+      this.getCartList()
+    },
     methods:{
+      getCartList() {
+        this.axios.get('/carts').then(res => {
+          this.list = res.cartProductVoList || []
+          this.allChecked = res.selectedAll
+          this.cartTotalPrice = res.cartTotalPrice
+          this.checkedNum = this.list.filter(item => item.productSelected).length
+        })
+      },
+      toggleAll() {
+
+      },
       // 购物车下单
       order(){
         this.$router.push('/order/confirm');
@@ -188,6 +205,7 @@
         margin-top: 20px;
         height: 50px;
         line-height: 50px;
+        background: #fff;
         .cart-tip{
           margin-left: 29px;
           a{
