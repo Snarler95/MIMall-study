@@ -8,12 +8,15 @@
 export default {
   name: 'App',
   mounted() {
-    this.getUser()
-    this.getCartCount()
+    if(this.$cookie.get('userId')){
+      this.getUser()
+      this.getCartCount()
+    }
   },
   methods: {
     getUser() {
       this.axios.get('/user').then((res={}) => {
+        console.log(res)
         this.$store.dispatch('saveUserName', res.username)
       })
     },
