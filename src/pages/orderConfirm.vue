@@ -133,7 +133,7 @@
             </select>
           </div>
           <div class="item">
-            <textarea name="street" v-model="checkedItem.receiverAddress"></textarea>
+            <textarea name="street" v-model="checkedItem.receiverAddress" placeholder="详细地址"></textarea>
           </div>
           <div class="item">
             <input type="text" class="input" placeholder="邮编" v-model="checkedItem.receiverZip">
@@ -456,10 +456,14 @@ export default{
           }
         }
         select{
+          width: 183px;
           height:40px;
           line-height:40px;
           border:1px solid #E5E5E5;
           margin-right:15px;
+          &:last-child {
+            margin-right: 0;
+          }
         }
         textarea{
           height:62px;

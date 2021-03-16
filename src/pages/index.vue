@@ -107,14 +107,14 @@
 <script>
 import ServiceBar from '../components/ServiceBar'
 import Modal from '../components/Modal'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 export default {
   name: 'index',
   components: {
     ServiceBar,
-    swiper,
-    swiperSlide,
+    Swiper,
+    SwiperSlide,
     Modal
   },
   data() {
